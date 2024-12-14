@@ -3,4 +3,7 @@
 GET {{BookStore_Base_Url}}/weatherforecast/
 Accept: application/json
 
-###
+### 
+
+GET {{BookStore_Base_Url}}/books
+Accept: application/json

@@ -1,10 +1,16 @@
+using BookStore.Books;
 using BookStore.Web;
+using FastEndpoints;
 using Scalar.AspNetCore;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddOpenApi();
+builder.Services.AddFastEndpoints();
+
+// Add Module Services
+builder.Services.AddBookServices();
 
 WebApplication app = builder.Build();
 
@@ -16,6 +22,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseFastEndpoints();
+
 string[] summaries =
 [
     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
