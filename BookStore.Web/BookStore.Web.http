@@ -1,6 +1,6 @@
-@BookStore.Web_HostAddress = http://localhost:5005
+@BookStore_Base_Url = http://localhost:5005
 
-GET {{BookStore.Web_HostAddress}}/weatherforecast/
+GET {{BookStore_Base_Url}}/weatherforecast/
 Accept: application/json
 
 ###
