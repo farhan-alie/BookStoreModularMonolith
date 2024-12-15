@@ -1,7 +1,4 @@
-﻿using FastEndpoints;
-using FluentValidation;
-
-namespace BookStore.Books.Endpoints.Books;
+﻿namespace BookStore.Books.Endpoints.Books;
 
 public static class UpdatePrice
 {

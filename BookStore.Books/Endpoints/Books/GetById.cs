@@ -1,6 +1,4 @@
-﻿using FastEndpoints;
-
-namespace BookStore.Books.Endpoints.Books;
+﻿namespace BookStore.Books.Endpoints.Books;
 
 public static class GetById
 {

@@ -24,3 +24,6 @@ app.UseHttpsRedirection();
 app.UseFastEndpoints();
 
 await app.RunAsync();
+
+#pragma warning disable CA1515
+public abstract partial class Program;

@@ -1,6 +1,4 @@
-﻿using Ardalis.GuardClauses;
-
-namespace BookStore.Books;
+﻿namespace BookStore.Books;
 
 public class Book
 {
