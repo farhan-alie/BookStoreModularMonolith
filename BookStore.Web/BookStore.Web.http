@@ -1,9 +1,41 @@
 @BookStore_Base_Url = http://localhost:5005
 
-GET {{BookStore_Base_Url}}/weatherforecast/
-Accept: application/json
-
-### 
+### List all books
 
 GET {{BookStore_Base_Url}}/books
 Accept: application/json
+
+### Add a new book
+
+POST {{BookStore_Base_Url}}/books
+Accept: application/json
+Content-Type: application/json
+
+{
+  "title": "Modular Monoliths - Getting Started",
+  "author": "Steve Smith",
+  "price": 29.99
+}
+
+### Get the book by ID
+
+@BookID=0193ca6e-eb6c-7a87-9b8d-f6b0a3e9f72f
+GET {{BookStore_Base_Url}}/books/{{BookID}}
+Accept: application/json
+
+### Update book price
+
+POST {{BookStore_Base_Url}}/books/{{BookID}}/pricehistory
+Accept: application/json
+Content-Type: application/json
+
+{
+  "newPrice": 19.99
+}
+
+### Delete the book
+
+DELETE {{BookStore_Base_Url}}/books/{{BookID}}
+Accept: application/json
+
+### 

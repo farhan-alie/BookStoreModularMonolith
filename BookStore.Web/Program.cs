@@ -1,5 +1,4 @@
 using BookStore.Books;
-using BookStore.Web;
 using FastEndpoints;
 using Scalar.AspNetCore;
 
@@ -10,7 +9,7 @@ builder.Services.AddOpenApi();
 builder.Services.AddFastEndpoints();
 
 // Add Module Services
-builder.Services.AddBookServices();
+builder.Services.AddBookServices(builder.Configuration);
 
 WebApplication app = builder.Build();
 
@@ -23,25 +22,5 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseFastEndpoints();
-
-string[] summaries =
-[
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-];
-
-app.MapGet("/weatherforecast", () =>
-{
-    WeatherForecast[] forecast = Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-           DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-#pragma warning disable CA5394
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-#pragma warning restore CA5394
-        ))
-        .ToArray();
-    return forecast;
-});
 
 await app.RunAsync();
