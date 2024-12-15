@@ -7,7 +7,7 @@ public static class Create
 {
     public record Request(string Title, string Author, decimal Price);
 
-    internal sealed class Validator : AbstractValidator<Request>
+    internal sealed class Validator : Validator<Request>
     {
         public Validator()
         {

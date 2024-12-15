@@ -7,7 +7,7 @@ public static class UpdatePrice
 {
     public record Request(Guid Id, decimal NewPrice);
 
-    internal sealed class Validator : AbstractValidator<Request>
+    internal sealed class Validator : Validator<Request>
     {
         public Validator()
         {
