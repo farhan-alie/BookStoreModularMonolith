@@ -1,4 +1,4 @@
-@BookStore_Base_Url = http://localhost:5005
+@BookStore_Base_Url = https://localhost:7162
 
 ### List all books
 
@@ -38,4 +38,25 @@ Content-Type: application/json
 DELETE {{BookStore_Base_Url}}/books/{{BookID}}
 Accept: application/json
 
-### 
+### Add a new user
+
+POST {{BookStore_Base_Url}}/users
+Accept: application/json
+Content-Type: application/json
+
+{
+  "email": "farhan.devx@gmail.com",
+  "password": "Pass@word1",
+  "fullName": "Farhan Ali"
+}
+
+### Login
+
+POST {{BookStore_Base_Url}}/users/login
+Accept: application/json
+Content-Type: application/json
+
+{
+  "email": "farhan.devx@gmail.com",
+  "password": "Pass@word1"
+}

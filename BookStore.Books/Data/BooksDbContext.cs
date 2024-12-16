@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BookStore.Books.Data;
 
-public class BooksDbContext(DbContextOptions options) : DbContext(options)
+public class BooksDbContext(DbContextOptions<BooksDbContext> options) : DbContext(options)
 {
     internal DbSet<Book> Books { get; set; }
 

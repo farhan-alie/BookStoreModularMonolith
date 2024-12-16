@@ -1,4 +1,5 @@
-﻿using Xunit.Abstractions;
+﻿using BookStore.Web;
+using Xunit.Abstractions;
 
 namespace BookStore.Books.Tests.Endpoints;
 

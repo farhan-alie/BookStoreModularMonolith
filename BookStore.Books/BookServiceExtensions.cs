@@ -1,4 +1,5 @@
-﻿using BookStore.Books.Data;
+﻿using System.Reflection;
+using BookStore.Books.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -8,7 +9,8 @@ namespace BookStore.Books;
 public static class BookServiceExtensions
 {
     public static IServiceCollection AddBookServices(this IServiceCollection services,
-        ConfigurationManager configuration)
+        ConfigurationManager configuration,
+        List<Assembly> mediatRAssemblies)
     {
         string connectionString = configuration.GetConnectionString("Books")!;
         services.AddDbContext<BooksDbContext>(options =>
