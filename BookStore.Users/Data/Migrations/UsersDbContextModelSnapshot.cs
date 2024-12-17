@@ -26,7 +26,6 @@ namespace BookStore.Users.Data.Migrations
             modelBuilder.Entity("BookStore.Users.CartItem", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ApplicationUserId")

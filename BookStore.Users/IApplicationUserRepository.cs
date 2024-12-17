@@ -2,6 +2,6 @@
 
 public interface IApplicationUserRepository
 {
-    Task<ApplicationUser> GetUserWithCartByEmailAsync(string email);
+    Task<ApplicationUser?> GetUserWithCartByEmailAsync(string email);
     Task SaveChangesAsync();
 }

@@ -2,30 +2,36 @@ using System.Reflection;
 using BookStore.Books;
 using BookStore.Users;
 using FastEndpoints;
-using Scalar.AspNetCore;
+using FastEndpoints.Security;
+using FastEndpoints.Swagger;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddOpenApi();
-builder.Services.AddFastEndpoints();
+builder.Services.AddFastEndpoints()
+    .AddAuthenticationJwtBearer(s =>
+        s.SigningKey = builder.Configuration.GetValue<string>("Auth:JwtSecret")!)
+    .AddAuthorization()
+    .SwaggerDocument();
 
 // Add Module Services
 List<Assembly> mediatRAssemblies = [typeof(Program).Assembly];
 builder.Services.AddBookServices(builder.Configuration, mediatRAssemblies);
 builder.Services.AddUserModuleServices(builder.Configuration, mediatRAssemblies);
 
+// Set up MediatR
+builder.Services.AddMediatR(cfg =>
+    cfg.RegisterServicesFromAssemblies(mediatRAssemblies.ToArray()));
+
 WebApplication app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-    app.MapScalarApiReference();
-}
 
 app.UseHttpsRedirection();
-app.UseFastEndpoints();
+app.UseAuthentication()
+    .UseAuthorization();
+
+app.UseFastEndpoints()
+    .UseSwaggerGen();
 
 await app.RunAsync();
 

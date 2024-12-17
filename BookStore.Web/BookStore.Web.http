@@ -60,3 +60,24 @@ Content-Type: application/json
   "email": "farhan.devx@gmail.com",
   "password": "Pass@word1"
 }
+
+
+### List items in the cart
+@token = eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MzQ0NzE2MjAsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImZhcmhhbi5kZXZ4QGdtYWlsLmNvbSIsImV4cCI6MTczNDQ3NTIyMCwibmJmIjoxNzM0NDcxNjIwfQ.cul-s2ji2czS1ybW9oQr-Uvy-vu8e7yLe0YkRd0N3T4
+
+GET {{BookStore_Base_Url}}/cart
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Add item to cart
+
+POST {{BookStore_Base_Url}}/cart
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "bookId": "{{BookID}}",
+  "quantity": 1
+}
+

@@ -18,6 +18,9 @@ public static class BookServiceExtensions
 
         services.AddScoped<IBookRepository, EfBookRepository>();
         services.AddScoped<IBookService, BookService>();
+
+        // if using MediatR in this module, add any assemblies that contain handlers to the list
+        mediatRAssemblies.Add(typeof(BookServiceExtensions).Assembly);
         return services;
     }
 }
